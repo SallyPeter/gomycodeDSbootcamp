@@ -1,0 +1,219 @@
+
+Salvation ~
+$ cd 'User/Desktop/learn_git'
+
+Salvation ~/User/Desktop/learn_git
+$ vim third.txt
+
+Salvation ~/User/Desktop/learn_git
+$ git init
+Initialized empty Git repository in C:/Users/salvation/User/Desktop/learn_git/.git/
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git add third.txt
+warning: in the working copy of 'third.txt', LF will be replaced by CRLF the next time Git touches it
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git commit -m "Adding third.txt"
+[master (root-commit) f80ce1d] Adding third.txt
+ Committer:  salvationpetero@gmail.com
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git log
+commit f80ce1d20ce6e91c347f620c92d52b995c8c6922 (HEAD -> master)
+Author:  salvationpetero@gmail.com
+Date:   Tue Aug 13 15:32:23 2024 +0100
+
+    Adding third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ vim fourth.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git add fourth.txt
+warning: in the working copy of 'fourth.txt', LF will be replaced by CRLF the next time Git touches it
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git commit -m "adding fourth.txt"
+[master eb74963] adding fourth.txt
+ Committer:  salvationpetero@gmail.com
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fourth.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --global user.email "petero@gmail.com"
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git log
+commit eb74963a0a51532c3ea7db06462ddaf259af08ff (HEAD -> master)
+Author:  salvationpetero@gmail.com
+Date:   Tue Aug 13 15:41:21 2024 +0100
+
+    adding fourth.txt
+
+commit f80ce1d20ce6e91c347f620c92d52b995c8c6922
+Author:  salvationpetero@gmail.com
+Date:   Tue Aug 13 15:32:23 2024 +0100
+
+    Adding third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ rm third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ ls
+fourth.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git add .
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git commit -m "removing third.txt"
+[master d7fe0c8] removing third.txt
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git log
+commit d7fe0c8f7d8a07cdf756c311f805f1dcc8578e2e (HEAD -> master)
+Author:  Peter <petero@gmail.com>
+Date:   Tue Aug 13 15:45:12 2024 +0100
+
+    removing third.txt
+
+commit eb74963a0a51532c3ea7db06462ddaf259af08ff
+Author:  salvationpetero@gmail.com
+Date:   Tue Aug 13 15:41:21 2024 +0100
+
+    adding fourth.txt
+
+commit f80ce1d20ce6e91c347f620c92d52b995c8c6922
+Author:  salvationpetero@gmail.com
+Date:   Tue Aug 13 15:32:23 2024 +0100
+
+    Adding third.txt
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --global core.pager
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --global core.pager"
+> ^C
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --global core.pager cat
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --list --show-origin
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  diff.astextplain.textconv=astextplain
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  filter.lfs.clean=git-lfs clean -- %f
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  filter.lfs.process=git-lfs filter-process
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  filter.lfs.required=true
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  http.sslbackend=openssl
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  http.sslcainfo=C:/Users/salvation/AppData/Local/Programs/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  core.autocrlf=true
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  core.fscache=true
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  core.symlinks=false
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  pull.rebase=false
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  credential.helper=manager
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  credential.https://dev.azure.com.usehttppath=true
+file:C:/Users/salvation/AppData/Local/Programs/Git/etc/gitconfig  init.defaultbranch=master
+file:C:/Users/salvation/.gitconfig        user.email=petero@gmail.com
+file:C:/Users/salvation/.gitconfig        core.pager=cat
+file:.git/config        core.repositoryformatversion=0
+file:.git/config        core.filemode=false
+file:.git/config        core.bare=false
+file:.git/config        core.logallrefupdates=true
+file:.git/config        core.symlinks=false
+file:.git/config        core.ignorecase=true
+
+Salvation ~/User/Desktop/learn_git (master)
+$ git config --global
+usage: git config [<options>]
+
+Config file location
+    --[no-]global         use global config file
+    --[no-]system         use system config file
+    --[no-]local          use repository config file
+    --[no-]worktree       use per-worktree config file
+    -f, --[no-]file <file>
+                          use given config file
+    --[no-]blob <blob-id> read config from given blob object
+
+Action
+    --[no-]get            get value: name [value-pattern]
+    --[no-]get-all        get all values: key [value-pattern]
+    --[no-]get-regexp     get values for regexp: name-regex [value-pattern]
+    --[no-]get-urlmatch   get value specific for the URL: section[.var] URL
+    --[no-]replace-all    replace all matching variables: name value [value-pattern]
+    --[no-]add            add a new variable: name value
+    --[no-]unset          remove a variable: name [value-pattern]
+    --[no-]unset-all      remove all matches: name [value-pattern]
+    --[no-]rename-section rename section: old-name new-name
+    --[no-]remove-section remove a section: name
+    -l, --[no-]list       list all
+    --[no-]fixed-value    use string equality when comparing values to 'value-pattern'
+    -e, --[no-]edit       open an editor
+    --[no-]get-color      find the color configured: slot [default]
+    --[no-]get-colorbool  find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --[no-]type <type>
+                          value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --[no-]null       terminate values with NUL byte
+    --[no-]name-only      show variable names only
+    --[no-]includes       respect include directives on lookup
+    --[no-]show-origin    show origin of config (file, standard input, blob, command line)
+    --[no-]show-scope     show scope of config (worktree, local, global, system, command)
+    --[no-]default <value>
+                          with --get, use default value when missing entry
+    --[no-]comment <value>
+                          human-readable comment string (# will be prepended as needed)
+
+
+Salvation ~/User/Desktop/learn_git (master)
+
+
+$
