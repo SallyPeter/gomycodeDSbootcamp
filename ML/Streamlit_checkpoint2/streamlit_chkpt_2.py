@@ -1,8 +1,9 @@
-import joblib
+
 import pandas as pd
 import streamlit as st
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelEncoder
+import joblib
 # from sklearn.model_selection import train_test_split
 # from sklearn.metrics import classification_report, confusion_matrix
 
@@ -36,7 +37,7 @@ with tab1:
     if st.sidebar.button("Query"):
         st.header("Predicting User Data")
         st.dataframe(pd.DataFrame([value_dict]))
-        
+
         user_data = value_dict
         for k, v in user_data.items():
             if k in le_order.keys():
