@@ -11,7 +11,8 @@ import joblib
 tab1, tab2 = st.tabs(["Predictions","Data Overview"])
 
 with tab1:
-    data = pd.read_csv("Financial_inclusion_dataset.csv")
+    # data = pd.read_csv("Financial_inclusion_dataset.csv")
+    data = pd.DataFrame(joblib.load("FID-Data.pkl"))
 
     st.dataframe(data.sample(25))
 
