@@ -20,7 +20,7 @@ import streamlit as st
 
 # Load the text file and preprocess the data
 
-with open('macbeth.txt', 'r', encoding='utf-8') as f:
+with open('./macbeth.txt', 'r', encoding='utf-8') as f:
 
     data = f.read().replace('\n', ' ')
 
