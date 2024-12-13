@@ -1,4 +1,5 @@
 import nltk
+import os
 
 # nltk.download('punkt')
 nltk.download('punkt_tab')
@@ -20,7 +21,13 @@ import streamlit as st
 
 # Load the text file and preprocess the data
 
-with open('./macbeth.txt', 'r', encoding='utf-8') as f:
+# Get the absolute path to the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to macbeth.txt
+file_path = os.path.join(script_dir, 'macbeth.txt')
+
+with open(file_path, 'r', encoding='utf-8') as f:
 
     data = f.read().replace('\n', ' ')
 
