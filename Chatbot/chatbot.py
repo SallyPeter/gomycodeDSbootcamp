@@ -105,7 +105,7 @@ def main():
 
     st.title("Chatbot")
 
-    st.write("Hello! I'm a chatbot. Ask me anything about the topic in the text file.")
+    st.write("Hello! I'm a Macbot. Ask me anything about the topic in Macbeth.")
 
     # Get the user's question
 
