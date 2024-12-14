@@ -1,44 +1,97 @@
 import cv2
-import av
+
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 
-# Load the face cascade classifier
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-# Define a class to process video frames
-class FaceDetectionTransformer(VideoTransformerBase):
-    def transform(self, frame):
-        # Convert the frame to a numpy array
-        img = frame.to_ndarray(format="bgr24")
+st.write("How to use this app")
 
-        # Convert the image to grayscale
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        # Detect faces in the image
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+# Step 2: Load the face cascade classifier
 
-        # Draw rectangles around detected faces
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+def detect_faces(minN, scaleF, color, filename="pic"):
+
+    # Initialize the webcam
+
+    cap = cv2.VideoCapture(0)
+
+    while True:
+
+        # Read the frames from the webcam
+
+        ret, frame = cap.read()
+
+        # Convert the frames to grayscale
+
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Detect the faces using the face cascade classifier
+
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=scaleF, minNeighbors=minN)
+
+        # Draw rectangles around the detected faces
+
         for (x, y, w, h) in faces:
-            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        # Return the processed frame
-        return av.VideoFrame.from_ndarray(img, format="bgr24")
+            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
 
-def detect_faces():
-    st.write("Starting face detection...")
-    webrtc_streamer(key="face-detection", video_transformer_factory=FaceDetectionTransformer, media_stream_constraints={
-        "video": True,
-        "audio": False
-    })
+        # Display the frames
+
+        cv2.imshow('Face Detection using Viola-Jones Algorithm', frame)
+
+        # Saving the detected face
+
+        cv2.imwrite(filename, frame) 
+
+        # Exit the loop when 'q' is pressed
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+
+            break
+
+    # Release the webcam and close all windows
+
+    cap.release()
+
+    cv2.destroyAllWindows()
+
 
 def app():
+
     st.title("Face Detection using Viola-Jones Algorithm")
+    st.markdown("""
+        How to use this app:
+                1. Ensure you have a webcam connected to this computer
+                2. Click on the "Detect Faces" button to detect faces from your webcam.
+                3. Enter the file name to save the detected face with
+                4. Click on save
+""")
+
     st.write("Press the button below to start detecting faces from your webcam")
 
     # Add a button to start detecting faces
-    if st.button("Detect Faces"):
-        detect_faces()
 
-if __name__ == "__main__":
-    app()
+    if st.button("Detect Faces"):
+
+        # Call the detect_faces function
+
+        # detect_faces()
+        
+        filename = st.text_input("Filename: ")
+        detect_faces(minN, scaleF, color, filename)
+    
+    with st.sidebar():
+        color = st.color_picker("Select a color for the rectangles:")
+        st.write("You picked ", color)
+        color = tuple(int(color.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
+        st.write("You picked ", color)
+        minN = st.slider("minNeighbors", 1, 20)
+        scaleF = st.slider("scaleFactor", 1, 10)
+    
+    st.write("You picked ", color)
+        
+
+# if __name__ == "__main__":
+
+#     app()
