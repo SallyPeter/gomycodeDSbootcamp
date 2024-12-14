@@ -89,9 +89,8 @@ def app():
         minN = st.slider("minNeighbors", 1, 20)
         scaleF = st.slider("scaleFactor", 1, 10)
     
-    st.write("You picked ", color)
         
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     app()
+    app()
